@@ -10,6 +10,8 @@
 for each character in the string
     hash = hash * 31 + character
 ```
+
+- done in hash_table.py
 - added a new funciton in class HashTable to resize the table
     - if the load factor is greater than 0.7, resize the table to double the size
 
@@ -63,3 +65,4 @@ all the others' orders must be added by one
 When a pair of <URL, Web page> is given, find if the given pair is contained in the cache or not
 If the pair is not found, insert the pair into the cache after evicting the least recently accessed pair
 
+- done in cache.py
