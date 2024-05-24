@@ -23,6 +23,7 @@ for each character in the string
     - Hash table is good at searching for a specific key, but it is not good at range queries. For example, if you want to find all the keys between 1 and 100, you have to search for each key one by one. On the other hand, a tree can easily find all the keys between 1 and 100 by traversing the tree.
 2. **Hash table needs resizing and when there are many data inside the hash table, recalculating the hash will cost much calculation**
     - Whereas in a tree, the size can be grown without resizing nor recalculation of all hash values, but only a few
+    - the database cannot be used while the resize is done
 3. **The calculation of hash becomes more time consuming depending on the amount of data**
     - The more data there are in the hash table, the calculation of hash becomes more constly in order not to have too much collision
 
