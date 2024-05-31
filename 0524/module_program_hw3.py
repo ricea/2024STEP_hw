@@ -184,6 +184,7 @@ def run_test():
     test("((2+2)*3)")
     test("((2+2)*3)+1")
     test("((2+2)*3)+1+1")
+    test("(2*3)+(4*5)")
     print("==== Test finished! ====\n")
 
 run_test()
