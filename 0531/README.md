@@ -12,6 +12,26 @@ Path found: ["コロラドハイツ大学", "1988年", "10月1日", "只見線",
 ```
 # homework 2
 ## Calculate the pageranks and print the most important 10 pages. Write your code in find_most_popular_pages().
+### using large data
+```
+英語: 4576.871929553824
+日本: 4569.192006226094
+VIAF_(識別子): 3806.807560545842
+バーチャル国際典拠ファイル: 3320.3541136929935
+アメリカ合衆国: 2714.516800486377
+ISBN: 2711.5479751245607
+ISNI_(識別子): 2060.6578924499363
+国際標準名称識別子: 1865.4441164828704
+地理座標系: 1815.8387970489675
+SUDOC_(識別子): 1518.7888508270769
+```
+* the last diff and page rank sum
+```
+Sum of page rank: 2215900.000012825
+Diff: 0.08676170984918835
+```
+
+
 ```
 The most popular pages are:
 英語: 1507.3380439107457
