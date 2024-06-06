@@ -1,4 +1,3 @@
-# done calculation using medium data
 # homework 1
 ## Calculate the distance from one page to another page. Write your code in find_shortest_path().
 ### Example
