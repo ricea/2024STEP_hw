@@ -10,6 +10,19 @@ struct WikiPedia {
     title_to_id: HashMap<String, usize>,
 }
 
+fun read_lines_into_poirs<F>(file: &str, process_pair: F) {
+        if let Ok(lines) = read_lines(pages_file) {
+            for line in lines {
+                if let Ok(ip) = line {
+                    let parts: Vec<&str> = ip.trim().split_whitespace().collect();
+                    if parts.len() == 2 {
+                        process_pair(parts)
+                    }
+                }
+            }
+        }
+    }
+
 impl WikiPedia {
     fn new(pages_file: &str, links_file: &str) -> WikiPedia {
         let mut titles = HashMap::new();
@@ -23,19 +36,9 @@ impl WikiPedia {
         }
 
         // read pages file into titles
-        if let Ok(lines) = read_lines(pages_file) {
-            for line in lines {
-                if let Ok(ip) = line {
-                    let parts: Vec<&str> = ip.trim().split_whitespace().collect();
-                    if parts.len() == 2 {
-                        let id = parts[0].parse::<usize>().unwrap();
-                        let title = parts[1].to_string();
-                        titles.insert(id, title.clone());
-                        title_to_id.insert(title, id);
-                    }
-                }
-            }
-        }
+        read_lines_into_pairs(pages_file, |parts| titles.insert(parts[0].parse::<usize>().unwrap(), parts[1].to_string().clone())
+  
+
         println!("Finished reading {}", pages_file);
         println!("Read {} titles", titles.len());
 
@@ -46,22 +49,15 @@ impl WikiPedia {
         }
 
         // read links file into links
-        if let Ok(lines) = read_lines(links_file) {
-            for line in lines {
-                if let Ok(ip) = line {
-                    let parts: Vec<&str> = ip.trim().split_whitespace().collect();
-                    if parts.len() >= 2 {
+        read_lines_into_pairs(links_file, |parts| {
                         let from = parts[0].parse::<usize>().unwrap();
                         let to = parts[1].parse::<usize>().unwrap();
                         let from_links = links.entry(from).or_insert(Vec::new());
                         // only add links to pages that are in the pages file also check src title exists
                         if titles.contains_key(&to) && titles.contains_key(&from) {
                             from_links.push(to);
-                        }                    
-                    }
-                }
-            }
-        }
+                        }   
+        });
         println!("Finished reading {}", links_file);
         println!("Read {} links", links.len());
         println!("\n");
